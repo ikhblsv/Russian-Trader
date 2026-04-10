@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vladimir Volkov — Трейдер из Дубая</title>
+    <meta name="description" content="Присоединяйся к команде Vladimir Volkov. Обучение трейдингу, сигналы, результат.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           VLADIMIR TRADER — RED EMPIRE / BRUTALIST
+           ============================================ */
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red-deep: #7F0000;
+            --red-primary: #B71C1C;
+            --red-bright: #E53935;
+            --red-accent: #FF5252;
+            --red-glow: #FF1744;
+            --black: #0A0A0A;
+            --black-light: #141414;
+            --black-card: #1A1A1A;
+            --black-border: #2A2A2A;
+            --white: #FFFFFF;
+            --white-soft: #E0E0E0;
+            --gray: #9E9E9E;
+            --gray-dark: #616161;
+            --font-display: 'Oswald', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--black);
+            color: var(--white-soft);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--red-bright);
+            color: var(--white);
+        }
+
+        /* ============================================
+           GRID OVERLAY (animated red lines)
+           ============================================ */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.03;
+        }
+
+        .grid-overlay .v-line {
+            position: absolute;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: var(--red-bright);
+        }
+
+        .grid-overlay .v-line:nth-child(1) { left: 20%; }
+        .grid-overlay .v-line:nth-child(2) { left: 40%; }
+        .grid-overlay .v-line:nth-child(3) { left: 60%; }
+        .grid-overlay .v-line:nth-child(4) { left: 80%; }
+
+        .grid-overlay .h-line {
+            position: absolute;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background: var(--red-bright);
+            animation: hLinePulse 4s ease-in-out infinite;
+        }
+
+        .grid-overlay .h-line:nth-child(5) { top: 25%; animation-delay: 0s; }
+        .grid-overlay .h-line:nth-child(6) { top: 50%; animation-delay: 1s; }
+        .grid-overlay .h-line:nth-child(7) { top: 75%; animation-delay: 2s; }
+
+        @keyframes hLinePulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ============================================
+           STICKY TIMER BAR (top)
+           ============================================ */
+        .timer-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            background: linear-gradient(90deg, var(--red-deep), var(--red-primary), var(--red-deep));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            z-index: 9999;
+            border-bottom: 1px solid var(--red-bright);
+            box-shadow: 0 2px 20px rgba(183, 28, 28, 0.4);
+        }
+
+        .timer-bar__label {
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+
+        .timer-bar__digits {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .timer-bar__block {
+            background: rgba(0,0,0,0.4);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            min-width: 36px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .timer-bar__sep {
+            color: var(--red-accent);
+            font-weight: 700;
+            font-size: 18px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* ============================================
+           MARQUEE TICKER
+           ============================================ */
+        .marquee-wrap {
+            position: fixed;
+            top: 48px;
+            left: 0;
+            width: 100%;
+            height: 32px;
+            background: var(--black);
+            border-bottom: 1px solid var(--black-border);
+            overflow: hidden;
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee-track {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee-track span {
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gray);
+            padding: 0 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .marquee-track .up { color: #4CAF50; }
+        .marquee-track .down { color: var(--red-accent); }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ============================================
+           MAIN CONTENT WRAPPER
+           ============================================ */
+        .main-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 80px;
+        }
+
+        /* ============================================
+           HERO — FULL SPLIT SCREEN
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__image-side {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .hero__image-side::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--black));
+        }
+
+        .hero__red-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--red-deep), var(--red-bright), var(--red-deep));
+        }
+
+        .hero__text-side {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            position: relative;
+        }
+
+        .hero__tag {
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--red-accent);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero__tag::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--red-bright);
+        }
+
+        .hero__name {
+            font-family: var(--font-display);
+            font-size: clamp(48px, 6vw, 80px);
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 0.95;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .hero__name span {
+            display: block;
+            color: var(--red-bright);
+        }
+
+        .hero__subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(18px, 2.5vw, 26px);
+            font-weight: 400;
+            color: var(--gray);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .hero__stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .hero__stat {
+            border-left: 3px solid var(--red-bright);
+            padding-left: 16px;
+        }
+
+        .hero__stat-num {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .hero__stat-label {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .hero__cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero__vertical-text {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            font-family: var(--font-display);
+            font-size: 11px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--black-border);
+            white-space: nowrap;
+        }
+
+        /* ============================================
+           BUTTONS
+           ============================================ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn--red {
+            background: var(--red-primary);
+            color: var(--white);
+            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+        }
+
+        .btn--red:hover {
+            background: var(--red-bright);
+            box-shadow: 0 0 30px rgba(229, 57, 53, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--black-border);
+            clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+        }
+
+        .btn--outline:hover {
+            border-color: var(--red-bright);
+            color: var(--red-accent);
+            transform: translateY(-2px);
+        }
+
+        .btn--full {
+            width: 100%;
+            justify-content: center;
+            padding: 18px 32px;
+            font-size: 15px;
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           SECTION FRAMEWORK
+           ============================================ */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section__header {
+            margin-bottom: 60px;
+        }
+
+        .section__overline {
+            font-family: var(--font-display);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--red-accent);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section__overline::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--red-bright);
+        }
+
+        .section__title {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--white);
+            line-height: 1.05;
+        }
+
+        .section__title span {
+            color: var(--red-bright);
+        }
+
+        .section__divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--red-deep), transparent);
+            margin: 0;
+        }
+
+        /* ============================================
+           ABOUT — FULL-WIDTH FLOOR BLOCKS
+           ============================================ */
+        .about-floors {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .floor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+            border-bottom: 1px solid var(--black-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floor:nth-child(even) .floor__image {
+            order: 2;
+        }
+
+        .floor:nth-child(even) .floor__content {
+            order: 1;
+        }
+
+        .floor__image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floor__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .floor:hover .floor__image img {
+            transform: scale(1.03);
+        }
+
+        .floor__image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 50%, rgba(10,10,10,0.6));
+        }
+
+        .floor__number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-family: var(--font-display);
+            font-size: 80px;
+            font-weight: 700;
+            color: var(--red-primary);
+            opacity: 0.15;
+            line-height: 1;
+        }
+
+        .floor__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            background: var(--black-light);
+        }
+
+        .floor__tag {
+            font-family: var(--font-display);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--red-accent);
+            margin-bottom: 16px;
+        }
+
+        .floor__title {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .floor__text {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 480px;
+        }
+
+        .floor__text strong {
+            color: var(--white);
+        }
+
+        /* ============================================
+           METHODOLOGY — ACCORDION
+           ============================================ */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .accordion__item {
+            background: var(--black-light);
+            border-left: 3px solid var(--black-border);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .accordion__item.active {
+            border-left-color: var(--red-bright);
+        }
+
+        .accordion__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 32px;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .accordion__header:hover {
+            background: rgba(183, 28, 28, 0.05);
+        }
+
+        .accordion__header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .accordion__num {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--red-bright);
+            min-width: 40px;
+        }
+
+        .accordion__label {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
+
+        .accordion__icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .accordion__icon::before,
+        .accordion__icon::after {
+            content: '';
+            position: absolute;
+            background: var(--red-bright);
+            transition: transform 0.3s ease;
+        }
+
+        .accordion__icon::before {
+            width: 24px;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        .accordion__icon::after {
+            width: 2px;
+            height: 24px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .accordion__item.active .accordion__icon::after {
+            transform: translateX(-50%) rotate(90deg);
+        }
+
+        .accordion__body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion__body-inner {
+            padding: 0 32px 28px 92px;
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .accordion__body-inner strong {
+            color: var(--red-accent);
+        }
+
+        /* ============================================
+           GALLERY — HORIZONTAL DRAG SCROLL
+           ============================================ */
+        .gallery-section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .gallery-scroll {
+            display: flex;
+            gap: 20px;
+            padding: 0 24px;
+            overflow-x: auto;
+            cursor: grab;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .gallery-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-scroll:active {
+            cursor: grabbing;
+        }
+
+        .gallery-card {
+            flex: 0 0 380px;
+            height: 500px;
+            border-radius: 0;
+            overflow: hidden;
+            position: relative;
+            scroll-snap-align: start;
+            border: 1px solid var(--black-border);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-card__overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 24px;
+            background: linear-gradient(transparent, rgba(10,10,10,0.9));
+        }
+
+        .gallery-card__title {
+            font-family: var(--font-display);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--white);
+        }
+
+        .gallery-card__sub {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+
+        .gallery-hint {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--gray-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ============================================
+           COMPARISON — INTERACTIVE SLIDER
+           ============================================ */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .comparison__side {
+            padding: 40px;
+        }
+
+        .comparison__side--without {
+            background: var(--black-light);
+            border: 1px solid var(--black-border);
+        }
+
+        .comparison__side--with {
+            background: linear-gradient(135deg, rgba(183,28,28,0.1), rgba(229,57,53,0.05));
+            border: 1px solid rgba(183,28,28,0.3);
+        }
+
+        .comparison__side-title {
+            font-family: var(--font-display);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--black-border);
+        }
+
+        .comparison__side--without .comparison__side-title {
+            color: var(--gray);
+        }
+
+        .comparison__side--with .comparison__side-title {
+            color: var(--red-accent);
+            border-bottom-color: var(--red-primary);
+        }
+
+        .comparison__list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .comparison__list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .comparison__side--without .comparison__list li {
+            color: var(--gray-dark);
+        }
+
+        .comparison__side--with .comparison__list li {
+            color: var(--white-soft);
+        }
+
+        .comparison__icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-top: 2px;
+        }
+
+        .comparison__side--without .comparison__icon {
+            color: var(--gray-dark);
+        }
+
+        .comparison__side--with .comparison__icon {
+            color: var(--red-accent);
+        }
+
+        .comparison__vs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--black);
+        }
+
+        .comparison__vs-text {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--red-bright);
+            writing-mode: vertical-rl;
+            letter-spacing: 4px;
+        }
+
+        /* ============================================
+           RESULTS — ANIMATED STAT BARS
+           ============================================ */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .result-card {
+            background: var(--black-light);
+            border: 1px solid var(--black-border);
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--red-primary), var(--red-bright));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.6s ease;
+        }
+
+        .result-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .result-card:hover {
+            border-color: var(--red-primary);
+            transform: translateY(-4px);
+        }
+
+        .result-card__value {
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--red-bright);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .result-card__label {
+            font-size: 13px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .result-card__bar {
+            margin-top: 20px;
+            height: 4px;
+            background: var(--black-border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .result-card__bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--red-primary), var(--red-bright));
+            border-radius: 2px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* ============================================
+           TESTIMONIALS
+           ============================================ */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .testimonial {
+            background: var(--black-light);
+            border: 1px solid var(--black-border);
+            padding: 32px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial::before {
+            content: '«';
+            font-family: var(--font-display);
+            font-size: 60px;
+            color: var(--red-primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 16px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial:hover {
+            border-color: var(--red-primary);
+        }
+
+        .testimonial__text {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial__author {
+            font-family: var(--font-display);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .testimonial__role {
+            font-size: 12px;
+            color: var(--red-accent);
+            margin-top: 2px;
+        }
+
+        /* ============================================
+           FINAL CTA SECTION
+           ============================================ */
+        .final-cta {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta__bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(183,28,28,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .final-cta__content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-cta__title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 60px);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1.05;
+        }
+
+        .final-cta__title span {
+            color: var(--red-bright);
+        }
+
+        .final-cta__subtitle {
+            font-size: 16px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            line-height: 1.7;
+        }
+
+        .final-cta__buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .final-cta__timer {
+            margin-top: 40px;
+            font-family: var(--font-display);
+            font-size: 14px;
+            color: var(--gray-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .final-cta__timer strong {
+            color: var(--red-accent);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--black-border);
+            text-align: center;
+        }
+
+        .footer__text {
+            font-size: 12px;
+            color: var(--gray-dark);
+            line-height: 1.8;
+        }
+
+        .footer__text a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+
+        .footer__risk {
+            margin-top: 16px;
+            font-size: 11px;
+            color: var(--gray-dark);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           ANIMATIONS — SCROLL REVEAL
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* ============================================
+           SVG RED PULSE LINES (decorative)
+           ============================================ */
+        .pulse-line {
+            position: absolute;
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--red-bright), transparent);
+            opacity: 0.1;
+            animation: pulseLine 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseLine {
+            0%, 100% { opacity: 0.05; transform: scaleX(0.5); }
+            50% { opacity: 0.15; transform: scaleX(1); }
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero__image-side {
+                height: 60vh;
+            }
+
+            .hero__image-side::after {
+                width: 100%;
+                height: 80px;
+                bottom: 0;
+                right: auto;
+                top: auto;
+                background: linear-gradient(transparent, var(--black));
+            }
+
+            .hero__text-side {
+                padding: 40px 24px 60px;
+            }
+
+            .hero__vertical-text {
+                display: none;
+            }
+
+            .floor {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .floor__image {
+                height: 350px;
+            }
+
+            .floor:nth-child(even) .floor__image { order: 0; }
+            .floor:nth-child(even) .floor__content { order: 0; }
+
+            .floor__content {
+                padding: 40px 24px;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .comparison__vs {
+                padding: 16px;
+            }
+
+            .comparison__vs-text {
+                writing-mode: horizontal-tb;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .timer-bar {
+                height: 42px;
+                gap: 8px;
+            }
+
+            .timer-bar__label {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .timer-bar__block {
+                font-size: 14px;
+                padding: 2px 6px;
+                min-width: 28px;
+            }
+
+            .marquee-wrap {
+                top: 42px;
+                height: 28px;
+            }
+
+            .main-content {
+                padding-top: 70px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .hero__stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero__cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .gallery-card {
+                flex: 0 0 300px;
+                height: 400px;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .accordion__header {
+                padding: 20px;
+            }
+
+            .accordion__body-inner {
+                padding: 0 20px 24px 60px;
+            }
+
+            .accordion__label {
+                font-size: 15px;
+            }
+
+            .final-cta {
+                padding: 80px 0;
+            }
+
+            .final-cta__buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero__name {
+                font-size: 40px;
+            }
+
+            .section__title {
+                font-size: 28px;
+            }
+
+            .comparison__side {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== GRID OVERLAY ========== -->
+    <div class="grid-overlay">
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="h-line"></div>
+        <div class="h-line"></div>
+        <div class="h-line"></div>
+    </div>
+
+    <!-- ========== STICKY TIMER BAR ========== -->
+    <div class="timer-bar">
+        <span class="timer-bar__label">Доступ закроется через</span>
+        <div class="timer-bar__digits">
+            <span class="timer-bar__block" id="t-hours">09</span>
+            <span class="timer-bar__sep">:</span>
+            <span class="timer-bar__block" id="t-minutes">00</span>
+            <span class="timer-bar__sep">:</span>
+            <span class="timer-bar__block" id="t-seconds">00</span>
+        </div>
+    </div>
+
+    <!-- ========== MARQUEE TICKER ========== -->
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span>BTC/USD <span class="up">+2.41%</span></span>
+            <span>EUR/USD <span class="down">-0.18%</span></span>
+            <span>GOLD <span class="up">+1.07%</span></span>
+            <span>ETH/USD <span class="up">+3.62%</span></span>
+            <span>GBP/JPY <span class="down">-0.53%</span></span>
+            <span>NASDAQ <span class="up">+0.89%</span></span>
+            <span>OIL <span class="down">-1.22%</span></span>
+            <span>SOL/USD <span class="up">+5.14%</span></span>
+            <span>AUD/USD <span class="up">+0.32%</span></span>
+            <span>S&P 500 <span class="up">+0.67%</span></span>
+            <span>BTC/USD <span class="up">+2.41%</span></span>
+            <span>EUR/USD <span class="down">-0.18%</span></span>
+            <span>GOLD <span class="up">+1.07%</span></span>
+            <span>ETH/USD <span class="up">+3.62%</span></span>
+            <span>GBP/JPY <span class="down">-0.53%</span></span>
+            <span>NASDAQ <span class="up">+0.89%</span></span>
+            <span>OIL <span class="down">-1.22%</span></span>
+            <span>SOL/USD <span class="up">+5.14%</span></span>
+            <span>AUD/USD <span class="up">+0.32%</span></span>
+            <span>S&P 500 <span class="up">+0.67%</span></span>
+        </div>
+    </div>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <div class="main-content">
+
+        <!-- ========== HERO ========== -->
+        <section class="hero">
+            <div class="hero__image-side">
+                <img src="vlad-hero.jpg" alt="Vladimir Volkov" loading="eager">
+                <div class="hero__red-bar"></div>
+            </div>
+            <div class="hero__text-side">
+                <div class="hero__tag">Частный трейдер • Дубай</div>
+                <h1 class="hero__name">
+                    Vladimir
+                    <span>Volkov</span>
+                </h1>
+                <p class="hero__subtitle">Торгую. Обучаю. Даю результат.</p>
+
+                <div class="hero__stats">
+                    <div class="hero__stat">
+                        <div class="hero__stat-num">10+</div>
+                        <div class="hero__stat-label">Лет опыта</div>
+                    </div>
+                    <div class="hero__stat">
+                        <div class="hero__stat-num">90%</div>
+                        <div class="hero__stat-label">Винрейт</div>
+                    </div>
+                    <div class="hero__stat">
+                        <div class="hero__stat-num">7K+</div>
+                        <div class="hero__stat-label">Учеников</div>
+                    </div>
+                </div>
+
+                <div class="hero__cta-group">
+                    <a href="https://tg.trading-top.com/3dkFKBQd3c" target="_blank" class="btn btn--red">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.28-.02-.12.03-2.02 1.28-5.69 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.38-.51 1.05-.78 4.12-1.79 6.87-2.97 8.26-3.54 3.93-1.62 4.75-1.9 5.28-1.91.12 0 .37.03.54.17.14.12.18.28.2.45-.01.06.01.24 0 .37z"/></svg>
+                        Telegram-канал
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCCySG084DhJZyicDcm697dw" target="_blank" class="btn btn--outline">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        YouTube
+                    </a>
+                </div>
+
+                <div class="hero__vertical-text">Vladimir Volkov • Dubai Trader</div>
+            </div>
+        </section>
+
+        <!-- ========== ABOUT — FLOORS ========== -->
+        <section class="section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <div class="section__overline">Обо мне</div>
+                    <h2 class="section__title">Путь от нуля <span>до Дубая</span></h2>
+                </div>
+            </div>
+
+            <div class="about-floors">
+                <!-- Floor 1 -->
+                <div class="floor reveal-left">
+                    <div class="floor__image">
+                        <img src="vlad-work.jpg" alt="Vladimir работает" loading="lazy">
+                        <div class="floor__image-overlay"></div>
+                        <div class="floor__number">01</div>
+                    </div>
+                    <div class="floor__content">
+                        <div class="floor__tag">Начало пути</div>
+                        <h3 class="floor__title">Москва. Первый депозит. Первые ошибки.</h3>
+                        <p class="floor__text">
+                            Начал торговать в 18 лет — без менторов, без стратегии, на интуиции. 
+                            <strong>Слил три депозита за первый год.</strong> Но вместо того чтобы бросить, 
+                            начал изучать рынок как систему. Часами разбирал графики, тестировал паттерны, 
+                            записывал каждую сделку в дневник. Через 2 года вышел в стабильный плюс.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Floor 2 -->
+                <div class="floor reveal-right">
+                    <div class="floor__image">
+                        <img src="vlad-life.jpg" alt="Vladimir lifestyle" loading="lazy">
+                        <div class="floor__image-overlay"></div>
+                        <div class="floor__number">02</div>
+                    </div>
+                    <div class="floor__content">
+                        <div class="floor__tag">Рост и система</div>
+                        <h3 class="floor__title">Дисциплина. Система. Результат.</h3>
+                        <p class="floor__text">
+                            К 24 годам собрал свою торговую систему, которая работала в любых условиях рынка — 
+                            <strong>тренд, флэт, кризис.</strong> Начал делиться знаниями. Первые 100 учеников 
+                            пришли через сарафан. Сейчас — сообщество из 7 000+ человек, которые торгуют по моей 
+                            методологии и выходят в плюс.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Floor 3 -->
+                <div class="floor reveal-left">
+                    <div class="floor__image">
+                        <img src="vlad-travel.jpg" alt="Vladimir travel" loading="lazy">
+                        <div class="floor__image-overlay"></div>
+                        <div class="floor__number">03</div>
+                    </div>
+                    <div class="floor__content">
+                        <div class="floor__tag">Сегодня</div>
+                        <h3 class="floor__title">Дубай. Свобода. Миссия.</h3>
+                        <p class="floor__text">
+                            Переехал в Дубай — не ради понтов, а ради <strong>среды, которая двигает вперёд.</strong> 
+                            Здесь я торгую каждый день, веду канал, обучаю. Моя цель — показать, что трейдинг 
+                            это не казино и не лотерея, а профессия, которая даёт свободу. Финансовую и 
+                            географическую.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section__divider"></div>
+
+        <!-- ========== METHODOLOGY — ACCORDION ========== -->
+        <section class="section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <div class="section__overline">Методология</div>
+                    <h2 class="section__title">Как я <span>торгую</span></h2>
+                </div>
+
+                <div class="accordion reveal">
+                    <div class="accordion__item active">
+                        <div class="accordion__header">
+                            <div class="accordion__header-left">
+                                <span class="accordion__num">01</span>
+                                <span class="accordion__label">Структура рынка</span>
+                            </div>
+                            <div class="accordion__icon"></div>
+                        </div>
+                        <div class="accordion__body" style="max-height: 200px;">
+                            <div class="accordion__body-inner">
+                                Прежде чем открыть сделку, я определяю фазу рынка — <strong>тренд, коррекция или консолидация</strong>. 
+                                Это фундамент. 80% трейдеров теряют деньги, потому что торгуют против структуры. 
+                                Я учу видеть рынок так, как его видят крупные игроки.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <div class="accordion__header">
+                            <div class="accordion__header-left">
+                                <span class="accordion__num">02</span>
+                                <span class="accordion__label">Ключевые уровни</span>
+                            </div>
+                            <div class="accordion__icon"></div>
+                        </div>
+                        <div class="accordion__body">
+                            <div class="accordion__body-inner">
+                                Не индикаторы — <strong>уровни поддержки и сопротивления</strong>. 
+                                Зоны, где реально стоят деньги. Я размечаю их на старших таймфреймах и 
+                                жду реакцию цены. Никаких угадываний — только подтверждённые зоны интереса.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <div class="accordion__header">
+                            <div class="accordion__header-left">
+                                <span class="accordion__num">03</span>
+                                <span class="accordion__label">Точки входа</span>
+                            </div>
+                            <div class="accordion__icon"></div>
+                        </div>
+                        <div class="accordion__body">
+                            <div class="accordion__body-inner">
+                                Вхожу только при совпадении <strong>минимум 3 факторов</strong>: структура + уровень + 
+                                паттерн Price Action. Это фильтрует 90% шума. Одна качественная сделка в день 
+                                лучше, чем десять «на удачу».
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <div class="accordion__header">
+                            <div class="accordion__header-left">
+                                <span class="accordion__num">04</span>
+                                <span class="accordion__label">Риск-менеджмент</span>
+                            </div>
+                            <div class="accordion__icon"></div>
+                        </div>
+                        <div class="accordion__body">
+                            <div class="accordion__body-inner">
+                                <strong>Максимум 2% на сделку. Всегда.</strong> Стоп-лосс обязателен. 
+                                Нет стопа — нет сделки. Именно управление рисками отличает профессионала от 
+                                игрока. Это правило сохранило мой депозит в каждом кризисе.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <div class="accordion__header">
+                            <div class="accordion__header-left">
+                                <span class="accordion__num">05</span>
+                                <span class="accordion__label">Психология</span>
+                            </div>
+                            <div class="accordion__icon"></div>
+                        </div>
+                        <div class="accordion__body">
+                            <div class="accordion__body-inner">
+                                Стратегия без дисциплины — ничто. Я учу <strong>контролировать эмоции</strong>, 
+                                не мстить рынку, не увеличивать лот после убытка. Дневник сделок, чек-листы, 
+                                ритуалы — всё это часть системы, которая приносит деньги.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion__item">
+                        <div class="accordion__header">
+                            <div class="accordion__header-left">
+                                <span class="accordion__num">06</span>
+                                <span class="accordion__label">Мультитаймфрейм</span>
+                            </div>
+                            <div class="accordion__icon"></div>
+                        </div>
+                        <div class="accordion__body">
+                            <div class="accordion__body-inner">
+                                Анализ <strong>сверху вниз: месяц → неделя → день → H4 → H1</strong>. 
+                                Старший таймфрейм задаёт направление, младший — точку входа. 
+                                Это исключает торговлю против основного движения и повышает точность до 90%.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section__divider"></div>
+
+        <!-- ========== GALLERY — HORIZONTAL SCROLL ========== -->
+        <section class="gallery-section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <div class="section__overline">Галерея</div>
+                    <h2 class="section__title">Моя <span>жизнь</span></h2>
+                </div>
+            </div>
+
+            <div class="gallery-scroll" id="galleryScroll">
+                <div class="gallery-card">
+                    <img src="vlad-hero.jpg" alt="Vladimir Volkov" loading="lazy">
+                    <div class="gallery-card__overlay">
+                        <div class="gallery-card__title">Vladimir Volkov</div>
+                        <div class="gallery-card__sub">Дубай, ОАЭ</div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="vlad-work.jpg" alt="Рабочий процесс" loading="lazy">
+                    <div class="gallery-card__overlay">
+                        <div class="gallery-card__title">Анализ рынка</div>
+                        <div class="gallery-card__sub">Ежедневная рутина</div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="vlad-life.jpg" alt="Lifestyle" loading="lazy">
+                    <div class="gallery-card__overlay">
+                        <div class="gallery-card__title">Lifestyle</div>
+                        <div class="gallery-card__sub">Свобода выбора</div>
+                    </div>
+                </div>
+                <div class="gallery-card">
+                    <img src="vlad-travel.jpg" alt="Путешествия" loading="lazy">
+                    <div class="gallery-card__overlay">
+                        <div class="gallery-card__title">Искусство и рынки</div>
+                        <div class="gallery-card__sub">Вдохновение повсюду</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-hint reveal">← Листай →</div>
+        </section>
+
+        <div class="section__divider"></div>
+
+        <!-- ========== COMPARISON ========== -->
+        <section class="section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <div class="section__overline">Сравнение</div>
+                    <h2 class="section__title">Самостоятельно <span>vs с Владимиром</span></h2>
+                </div>
+
+                <div class="comparison reveal">
+                    <div class="comparison__side comparison__side--without">
+                        <div class="comparison__side-title">Сам по себе</div>
+                        <ul class="comparison__list">
+                            <li>
+                                <span class="comparison__icon">✕</span>
+                                <span>Годы проб и ошибок без наставника</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">✕</span>
+                                <span>Слитые депозиты на «обучении» рынком</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">✕</span>
+                                <span>Торговля на эмоциях и интуиции</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">✕</span>
+                                <span>Информационный хаос из YouTube и форумов</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">✕</span>
+                                <span>Нет системы — нет стабильного результата</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">✕</span>
+                                <span>Одиночество и сомнения в каждом решении</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">✕</span>
+                                <span>Результат: минус на дистанции</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison__vs">
+                        <span class="comparison__vs-text">VS</span>
+                    </div>
+
+                    <div class="comparison__side comparison__side--with">
+                        <div class="comparison__side-title">С Владимиром</div>
+                        <ul class="comparison__list">
+                            <li>
+                                <span class="comparison__icon">◆</span>
+                                <span>Готовая система с первого дня</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">◆</span>
+                                <span>Чёткие правила входа и выхода</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">◆</span>
+                                <span>Риск-менеджмент, который сохраняет депозит</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">◆</span>
+                                <span>Ежедневные сигналы и разборы в реальном времени</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">◆</span>
+                                <span>Сообщество трейдеров, которые зарабатывают</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">◆</span>
+                                <span>Поддержка и обратная связь на каждом этапе</span>
+                            </li>
+                            <li>
+                                <span class="comparison__icon">◆</span>
+                                <span>Результат: стабильный плюс на дистанции</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section__divider"></div>
+
+        <!-- ========== RESULTS ========== -->
+        <section class="section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <div class="section__overline">Результаты</div>
+                    <h2 class="section__title">Цифры <span>говорят</span></h2>
+                </div>
+
+                <div class="results-grid">
+                    <div class="result-card reveal">
+                        <div class="result-card__value">90%</div>
+                        <div class="result-card__label">Винрейт стратегии</div>
+                        <div class="result-card__bar">
+                            <div class="result-card__bar-fill" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="result-card reveal">
+                        <div class="result-card__value">7 200+</div>
+                        <div class="result-card__label">Учеников в сообществе</div>
+                        <div class="result-card__bar">
+                            <div class="result-card__bar-fill" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="result-card reveal">
+                        <div class="result-card__value">10+</div>
+                        <div class="result-card__label">Лет на рынке</div>
+                        <div class="result-card__bar">
+                            <div class="result-card__bar-fill" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="result-card reveal">
+                        <div class="result-card__value">2 400+</div>
+                        <div class="result-card__label">Сигналов за 2024 год</div>
+                        <div class="result-card__bar">
+                            <div class="result-card__bar-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="result-card reveal">
+                        <div class="result-card__value">15+</div>
+                        <div class="result-card__label">Торговых инструментов</div>
+                        <div class="result-card__bar">
+                            <div class="result-card__bar-fill" data-width="70"></div>
+                        </div>
+                    </div>
+                    <div class="result-card reveal">
+                        <div class="result-card__value">24/5</div>
+                        <div class="result-card__label">Мониторинг рынка</div>
+                        <div class="result-card__bar">
+                            <div class="result-card__bar-fill" data-width="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section__divider"></div>
+
+        <!-- ========== TESTIMONIALS ========== -->
+        <section class="section">
+            <div class="container">
+                <div class="section__header reveal">
+                    <div class="section__overline">Отзывы</div>
+                    <h2 class="section__title">Что говорят <span>ученики</span></h2>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial reveal">
+                        <p class="testimonial__text">
+                            Полгода торговал в минус. После месяца с Владимиром впервые закрыл месяц в плюс. 
+                            Система реально работает — нужна только дисциплина.
+                        </p>
+                        <div class="testimonial__author">Дмитрий К.</div>
+                        <div class="testimonial__role">Трейдер, 8 месяцев в команде</div>
+                    </div>
+                    <div class="testimonial reveal">
+                        <p class="testimonial__text">
+                            Главное — это подход к рискам. Раньше мог поставить 10% депозита на одну сделку. 
+                            Теперь строго 1-2%, и результат стал стабильным. Спасибо, Влад.
+                        </p>
+                        <div class="testimonial__author">Алексей М.</div>
+                        <div class="testimonial__role">Трейдер, 1 год в команде</div>
+                    </div>
+                    <div class="testimonial reveal">
+                        <p class="testimonial__text">
+                            Пришла полным новичком. Через 3 месяца начала торговать самостоятельно. 
+                            Разборы, сигналы, поддержка — всё на высшем уровне.
+                        </p>
+                        <div class="testimonial__author">Елена В.</div>
+                        <div class="testimonial__role">Трейдер, 5 месяцев в команде</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section__divider"></div>
+
+        <!-- ========== FINAL CTA ========== -->
+        <section class="final-cta">
+            <div class="final-cta__bg"></div>
+            <div class="final-cta__content container">
+                <div class="section__overline" style="justify-content: center; margin-bottom: 20px;">
+                    <span>Присоединяйся</span>
+                </div>
+                <h2 class="final-cta__title reveal">
+                    Готов торговать<br><span>с результатом?</span>
+                </h2>
+                <p class="final-cta__subtitle reveal">
+                    Подписывайся на канал, изучай контент, следуй системе. 
+                    Первые результаты — уже через неделю.
+                </p>
+
+                <div class="final-cta__buttons reveal">
+                    <a href="https://tg.trading-top.com/3dkFKBQd3c" target="_blank" class="btn btn--red">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.28-.02-.12.03-2.02 1.28-5.69 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.38-.51 1.05-.78 4.12-1.79 6.87-2.97 8.26-3.54 3.93-1.62 4.75-1.9 5.28-1.91.12 0 .37.03.54.17.14.12.18.28.2.45-.01.06.01.24 0 .37z"/></svg>
+                        Telegram-канал
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCCySG084DhJZyicDcm697dw" target="_blank" class="btn btn--outline">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        YouTube
+                    </a>
+                </div>
+
+                <div class="final-cta__timer reveal">
+                    Осталось <strong id="footer-timer">09:00:00</strong> до закрытия доступа
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="footer">
+            <div class="container">
+                <p class="footer__text">
+                    © 2025 Vladimir Volkov. Все права защищены.
+                </p>
+                <p class="footer__risk">
+                    Торговля на финансовых рынках связана с высоким уровнем риска и подходит не всем инвесторам. 
+                    Прошлые результаты не гарантируют будущую прибыль. Контент носит образовательный характер 
+                    и не является финансовой рекомендацией.
+                </p>
+            </div>
+        </footer>
+
+    </div><!-- /main-content -->
+
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        /* ---- TIMER (9 hours, localStorage persist, infinite loop) ---- */
+        (function() {
+            const DURATION = 9 * 60 * 60 * 1000; // 9 hours
+            const KEY = 'vladTimerEnd';
+
+            function getEnd() {
+                let end = localStorage.getItem(KEY);
+                if (!end || Number(end) <= Date.now()) {
+                    end = Date.now() + DURATION;
+                    localStorage.setItem(KEY, end);
+                }
+                return Number(end);
+            }
+
+            function pad(n) { return n < 10 ? '0' + n : n; }
+
+            function tick() {
+                let end = getEnd();
+                let diff = end - Date.now();
+
+                if (diff <= 0) {
+                    end = Date.now() + DURATION;
+                    localStorage.setItem(KEY, end);
+                    diff = DURATION;
+                }
+
+                const h = Math.floor(diff / 3600000);
+                const m = Math.floor((diff % 3600000) / 60000);
+                const s = Math.floor((diff % 60000) / 1000);
+
+                document.getElementById('t-hours').textContent = pad(h);
+                document.getElementById('t-minutes').textContent = pad(m);
+                document.getElementById('t-seconds').textContent = pad(s);
+
+                const ft = document.getElementById('footer-timer');
+                if (ft) ft.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+            }
+
+            tick();
+            setInterval(tick, 1000);
+        })();
+
+        /* ---- ACCORDION ---- */
+        document.querySelectorAll('.accordion__header').forEach(function(header) {
+            header.addEventListener('click', function() {
+                const item = this.parentElement;
+                const body = item.querySelector('.accordion__body');
+                const inner = body.querySelector('.accordion__body-inner');
+                const isActive = item.classList.contains('active');
+
+                // Close all
+                document.querySelectorAll('.accordion__item').forEach(function(ai) {
+                    ai.classList.remove('active');
+                    ai.querySelector('.accordion__body').style.maxHeight = '0';
+                });
+
+                // Open clicked (if was closed)
+                if (!isActive) {
+                    item.classList.add('active');
+                    body.style.maxHeight = inner.scrollHeight + 28 + 'px';
+                }
+            });
+        });
+
+        /* ---- SCROLL REVEAL ---- */
+        (function() {
+            const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            els.forEach(function(el) { observer.observe(el); });
+        })();
+
+        /* ---- RESULT BAR ANIMATION ---- */
+        (function() {
+            const bars = document.querySelectorAll('.result-card__bar-fill');
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const w = entry.target.getAttribute('data-width');
+                        entry.target.style.width = w + '%';
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            bars.forEach(function(bar) { observer.observe(bar); });
+        })();
+
+        /* ---- GALLERY DRAG SCROLL ---- */
+        (function() {
+            const el = document.getElementById('galleryScroll');
+            if (!el) return;
+            let isDown = false, startX, scrollLeft;
+
+            el.addEventListener('mousedown', function(e) {
+                isDown = true;
+                el.style.cursor = 'grabbing';
+                startX = e.pageX - el.offsetLeft;
+                scrollLeft = el.scrollLeft;
+            });
+
+            el.addEventListener('mouseleave', function() {
+                isDown = false;
+                el.style.cursor = 'grab';
+            });
+
+            el.addEventListener('mouseup', function() {
+                isDown = false;
+                el.style.cursor = 'grab';
+            });
+
+            el.addEventListener('mousemove', function(e) {
+                if (!isDown) return;
+                e.preventDefault();
+                var x = e.pageX - el.offsetLeft;
+                var walk = (x - startX) * 1.5;
+                el.scrollLeft = scrollLeft - walk;
+            });
+        })();
+    </script>
+</body>
+</html>
