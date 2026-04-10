@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vladimir Volkov — Трейдер из Дубая</title>
-    <meta name="description" content="Присоединяйся к команде Vladimir Volkov. Обучение трейдингу, сигналы, результат.">
+    <title>Vladimir Volkov — Dubai Trader</title>
+    <meta name="description" content="Join Vladimir Volkov's trading community. Proven strategy, daily signals, real results.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ============================================
-           VLADIMIR TRADER — RED EMPIRE / BRUTALIST
-           ============================================ */
-
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -54,9 +50,6 @@
             color: var(--white);
         }
 
-        /* ============================================
-           GRID OVERLAY (animated red lines)
-           ============================================ */
         .grid-overlay {
             position: fixed;
             top: 0;
@@ -99,9 +92,6 @@
             50% { opacity: 1; }
         }
 
-        /* ============================================
-           STICKY TIMER BAR (top)
-           ============================================ */
         .timer-bar {
             position: fixed;
             top: 0;
@@ -158,9 +148,6 @@
             50% { opacity: 0.3; }
         }
 
-        /* ============================================
-           MARQUEE TICKER
-           ============================================ */
         .marquee-wrap {
             position: fixed;
             top: 48px;
@@ -198,18 +185,12 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* ============================================
-           MAIN CONTENT WRAPPER
-           ============================================ */
         .main-content {
             position: relative;
             z-index: 2;
             padding-top: 80px;
         }
 
-        /* ============================================
-           HERO — FULL SPLIT SCREEN
-           ============================================ */
         .hero {
             min-height: 100vh;
             display: grid;
@@ -350,9 +331,6 @@
             white-space: nowrap;
         }
 
-        /* ============================================
-           BUTTONS
-           ============================================ */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -396,13 +374,6 @@
             transform: translateY(-2px);
         }
 
-        .btn--full {
-            width: 100%;
-            justify-content: center;
-            padding: 18px 32px;
-            font-size: 15px;
-        }
-
         .btn svg {
             width: 18px;
             height: 18px;
@@ -410,9 +381,6 @@
             flex-shrink: 0;
         }
 
-        /* ============================================
-           SECTION FRAMEWORK
-           ============================================ */
         .section {
             padding: 100px 0;
             position: relative;
@@ -465,16 +433,11 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--red-deep), transparent);
-            margin: 0;
         }
 
-        /* ============================================
-           ABOUT — FULL-WIDTH FLOOR BLOCKS
-           ============================================ */
         .about-floors {
             display: flex;
             flex-direction: column;
-            gap: 0;
         }
 
         .floor {
@@ -486,13 +449,8 @@
             overflow: hidden;
         }
 
-        .floor:nth-child(even) .floor__image {
-            order: 2;
-        }
-
-        .floor:nth-child(even) .floor__content {
-            order: 1;
-        }
+        .floor:nth-child(even) .floor__image { order: 2; }
+        .floor:nth-child(even) .floor__content { order: 1; }
 
         .floor__image {
             position: relative;
@@ -571,9 +529,6 @@
             color: var(--white);
         }
 
-        /* ============================================
-           METHODOLOGY — ACCORDION
-           ============================================ */
         .accordion {
             display: flex;
             flex-direction: column;
@@ -680,9 +635,6 @@
             color: var(--red-accent);
         }
 
-        /* ============================================
-           GALLERY — HORIZONTAL DRAG SCROLL
-           ============================================ */
         .gallery-section {
             padding: 100px 0;
             overflow: hidden;
@@ -700,18 +652,12 @@
             -ms-overflow-style: none;
         }
 
-        .gallery-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .gallery-scroll:active {
-            cursor: grabbing;
-        }
+        .gallery-scroll::-webkit-scrollbar { display: none; }
+        .gallery-scroll:active { cursor: grabbing; }
 
         .gallery-card {
             flex: 0 0 380px;
             height: 500px;
-            border-radius: 0;
             overflow: hidden;
             position: relative;
             scroll-snap-align: start;
@@ -726,9 +672,7 @@
             transition: transform 0.5s ease;
         }
 
-        .gallery-card:hover img {
-            transform: scale(1.05);
-        }
+        .gallery-card:hover img { transform: scale(1.05); }
 
         .gallery-card__overlay {
             position: absolute;
@@ -763,9 +707,6 @@
             text-transform: uppercase;
         }
 
-        /* ============================================
-           COMPARISON — INTERACTIVE SLIDER
-           ============================================ */
         .comparison {
             display: grid;
             grid-template-columns: 1fr 60px 1fr;
@@ -774,9 +715,7 @@
             margin: 0 auto;
         }
 
-        .comparison__side {
-            padding: 40px;
-        }
+        .comparison__side { padding: 40px; }
 
         .comparison__side--without {
             background: var(--black-light);
@@ -799,9 +738,7 @@
             border-bottom: 2px solid var(--black-border);
         }
 
-        .comparison__side--without .comparison__side-title {
-            color: var(--gray);
-        }
+        .comparison__side--without .comparison__side-title { color: var(--gray); }
 
         .comparison__side--with .comparison__side-title {
             color: var(--red-accent);
@@ -823,13 +760,8 @@
             line-height: 1.6;
         }
 
-        .comparison__side--without .comparison__list li {
-            color: var(--gray-dark);
-        }
-
-        .comparison__side--with .comparison__list li {
-            color: var(--white-soft);
-        }
+        .comparison__side--without .comparison__list li { color: var(--gray-dark); }
+        .comparison__side--with .comparison__list li { color: var(--white-soft); }
 
         .comparison__icon {
             flex-shrink: 0;
@@ -842,13 +774,8 @@
             margin-top: 2px;
         }
 
-        .comparison__side--without .comparison__icon {
-            color: var(--gray-dark);
-        }
-
-        .comparison__side--with .comparison__icon {
-            color: var(--red-accent);
-        }
+        .comparison__side--without .comparison__icon { color: var(--gray-dark); }
+        .comparison__side--with .comparison__icon { color: var(--red-accent); }
 
         .comparison__vs {
             display: flex;
@@ -866,9 +793,6 @@
             letter-spacing: 4px;
         }
 
-        /* ============================================
-           RESULTS — ANIMATED STAT BARS
-           ============================================ */
         .results-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -897,9 +821,7 @@
             transition: transform 0.6s ease;
         }
 
-        .result-card:hover::before {
-            transform: scaleX(1);
-        }
+        .result-card:hover::before { transform: scaleX(1); }
 
         .result-card:hover {
             border-color: var(--red-primary);
@@ -938,9 +860,6 @@
             transition: width 1.5s ease;
         }
 
-        /* ============================================
-           TESTIMONIALS
-           ============================================ */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -956,7 +875,7 @@
         }
 
         .testimonial::before {
-            content: '«';
+            content: '"';
             font-family: var(--font-display);
             font-size: 60px;
             color: var(--red-primary);
@@ -967,9 +886,7 @@
             line-height: 1;
         }
 
-        .testimonial:hover {
-            border-color: var(--red-primary);
-        }
+        .testimonial:hover { border-color: var(--red-primary); }
 
         .testimonial__text {
             font-size: 14px;
@@ -996,9 +913,6 @@
             margin-top: 2px;
         }
 
-        /* ============================================
-           FINAL CTA SECTION
-           ============================================ */
         .final-cta {
             padding: 120px 0;
             text-align: center;
@@ -1031,9 +945,7 @@
             line-height: 1.05;
         }
 
-        .final-cta__title span {
-            color: var(--red-bright);
-        }
+        .final-cta__title span { color: var(--red-bright); }
 
         .final-cta__subtitle {
             font-size: 16px;
@@ -1059,13 +971,8 @@
             text-transform: uppercase;
         }
 
-        .final-cta__timer strong {
-            color: var(--red-accent);
-        }
+        .final-cta__timer strong { color: var(--red-accent); }
 
-        /* ============================================
-           FOOTER
-           ============================================ */
         .footer {
             padding: 40px 0;
             border-top: 1px solid var(--black-border);
@@ -1078,11 +985,6 @@
             line-height: 1.8;
         }
 
-        .footer__text a {
-            color: var(--gray);
-            text-decoration: none;
-        }
-
         .footer__risk {
             margin-top: 16px;
             font-size: 11px;
@@ -1093,9 +995,6 @@
             line-height: 1.6;
         }
 
-        /* ============================================
-           ANIMATIONS — SCROLL REVEAL
-           ============================================ */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -1129,35 +1028,13 @@
             transform: translateX(0);
         }
 
-        /* ============================================
-           SVG RED PULSE LINES (decorative)
-           ============================================ */
-        .pulse-line {
-            position: absolute;
-            width: 200px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--red-bright), transparent);
-            opacity: 0.1;
-            animation: pulseLine 3s ease-in-out infinite;
-        }
-
-        @keyframes pulseLine {
-            0%, 100% { opacity: 0.05; transform: scaleX(0.5); }
-            50% { opacity: 0.15; transform: scaleX(1); }
-        }
-
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
         @media (max-width: 1024px) {
             .hero {
                 grid-template-columns: 1fr;
                 min-height: auto;
             }
 
-            .hero__image-side {
-                height: 60vh;
-            }
+            .hero__image-side { height: 60vh; }
 
             .hero__image-side::after {
                 width: 100%;
@@ -1168,57 +1045,32 @@
                 background: linear-gradient(transparent, var(--black));
             }
 
-            .hero__text-side {
-                padding: 40px 24px 60px;
-            }
-
-            .hero__vertical-text {
-                display: none;
-            }
+            .hero__text-side { padding: 40px 24px 60px; }
+            .hero__vertical-text { display: none; }
 
             .floor {
                 grid-template-columns: 1fr;
                 min-height: auto;
             }
 
-            .floor__image {
-                height: 350px;
-            }
-
+            .floor__image { height: 350px; }
             .floor:nth-child(even) .floor__image { order: 0; }
             .floor:nth-child(even) .floor__content { order: 0; }
-
-            .floor__content {
-                padding: 40px 24px;
-            }
+            .floor__content { padding: 40px 24px; }
 
             .comparison {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
 
-            .comparison__vs {
-                padding: 16px;
-            }
-
-            .comparison__vs-text {
-                writing-mode: horizontal-tb;
-            }
-
-            .results-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
+            .comparison__vs { padding: 16px; }
+            .comparison__vs-text { writing-mode: horizontal-tb; }
+            .results-grid { grid-template-columns: 1fr 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            .timer-bar {
-                height: 42px;
-                gap: 8px;
-            }
+            .timer-bar { height: 42px; gap: 8px; }
 
             .timer-bar__label {
                 font-size: 10px;
@@ -1231,27 +1083,16 @@
                 min-width: 28px;
             }
 
-            .marquee-wrap {
-                top: 42px;
-                height: 28px;
-            }
-
-            .main-content {
-                padding-top: 70px;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
+            .marquee-wrap { top: 42px; height: 28px; }
+            .main-content { padding-top: 70px; }
+            .section { padding: 60px 0; }
 
             .hero__stats {
                 flex-direction: column;
                 gap: 20px;
             }
 
-            .hero__cta-group {
-                flex-direction: column;
-            }
+            .hero__cta-group { flex-direction: column; }
 
             .btn {
                 width: 100%;
@@ -1263,25 +1104,12 @@
                 height: 400px;
             }
 
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
+            .results-grid { grid-template-columns: 1fr; }
 
-            .accordion__header {
-                padding: 20px;
-            }
-
-            .accordion__body-inner {
-                padding: 0 20px 24px 60px;
-            }
-
-            .accordion__label {
-                font-size: 15px;
-            }
-
-            .final-cta {
-                padding: 80px 0;
-            }
+            .accordion__header { padding: 20px; }
+            .accordion__body-inner { padding: 0 20px 24px 60px; }
+            .accordion__label { font-size: 15px; }
+            .final-cta { padding: 80px 0; }
 
             .final-cta__buttons {
                 flex-direction: column;
@@ -1290,23 +1118,14 @@
         }
 
         @media (max-width: 480px) {
-            .hero__name {
-                font-size: 40px;
-            }
-
-            .section__title {
-                font-size: 28px;
-            }
-
-            .comparison__side {
-                padding: 28px 20px;
-            }
+            .hero__name { font-size: 40px; }
+            .section__title { font-size: 28px; }
+            .comparison__side { padding: 28px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========== GRID OVERLAY ========== -->
     <div class="grid-overlay">
         <div class="v-line"></div>
         <div class="v-line"></div>
@@ -1317,9 +1136,9 @@
         <div class="h-line"></div>
     </div>
 
-    <!-- ========== STICKY TIMER BAR ========== -->
+    <!-- STICKY TIMER -->
     <div class="timer-bar">
-        <span class="timer-bar__label">Доступ закроется через</span>
+        <span class="timer-bar__label">Access closes in</span>
         <div class="timer-bar__digits">
             <span class="timer-bar__block" id="t-hours">09</span>
             <span class="timer-bar__sep">:</span>
@@ -1329,7 +1148,7 @@
         </div>
     </div>
 
-    <!-- ========== MARQUEE TICKER ========== -->
+    <!-- MARQUEE TICKER -->
     <div class="marquee-wrap">
         <div class="marquee-track">
             <span>BTC/USD <span class="up">+2.41%</span></span>
@@ -1355,42 +1174,41 @@
         </div>
     </div>
 
-    <!-- ========== MAIN CONTENT ========== -->
     <div class="main-content">
 
-        <!-- ========== HERO ========== -->
+        <!-- HERO -->
         <section class="hero">
             <div class="hero__image-side">
                 <img src="vlad-hero.jpg" alt="Vladimir Volkov" loading="eager">
                 <div class="hero__red-bar"></div>
             </div>
             <div class="hero__text-side">
-                <div class="hero__tag">Частный трейдер • Дубай</div>
+                <div class="hero__tag">Private Trader • Dubai</div>
                 <h1 class="hero__name">
                     Vladimir
                     <span>Volkov</span>
                 </h1>
-                <p class="hero__subtitle">Торгую. Обучаю. Даю результат.</p>
+                <p class="hero__subtitle">I trade. I teach. I deliver results.</p>
 
                 <div class="hero__stats">
                     <div class="hero__stat">
                         <div class="hero__stat-num">10+</div>
-                        <div class="hero__stat-label">Лет опыта</div>
+                        <div class="hero__stat-label">Years Experience</div>
                     </div>
                     <div class="hero__stat">
                         <div class="hero__stat-num">90%</div>
-                        <div class="hero__stat-label">Винрейт</div>
+                        <div class="hero__stat-label">Win Rate</div>
                     </div>
                     <div class="hero__stat">
                         <div class="hero__stat-num">7K+</div>
-                        <div class="hero__stat-label">Учеников</div>
+                        <div class="hero__stat-label">Students</div>
                     </div>
                 </div>
 
                 <div class="hero__cta-group">
                     <a href="https://tg.trading-top.com/3dkFKBQd3c" target="_blank" class="btn btn--red">
                         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.28-.02-.12.03-2.02 1.28-5.69 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.38-.51 1.05-.78 4.12-1.79 6.87-2.97 8.26-3.54 3.93-1.62 4.75-1.9 5.28-1.91.12 0 .37.03.54.17.14.12.18.28.2.45-.01.06.01.24 0 .37z"/></svg>
-                        Telegram-канал
+                        Telegram Channel
                     </a>
                     <a href="https://www.youtube.com/channel/UCCySG084DhJZyicDcm697dw" target="_blank" class="btn btn--outline">
                         <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -1402,36 +1220,35 @@
             </div>
         </section>
 
-        <!-- ========== ABOUT — FLOORS ========== -->
+        <!-- ABOUT — FLOORS -->
         <section class="section">
             <div class="container">
                 <div class="section__header reveal">
-                    <div class="section__overline">Обо мне</div>
-                    <h2 class="section__title">Путь от нуля <span>до Дубая</span></h2>
+                    <div class="section__overline">About Me</div>
+                    <h2 class="section__title">From zero <span>to Dubai</span></h2>
                 </div>
             </div>
 
             <div class="about-floors">
-                <!-- Floor 1 -->
                 <div class="floor reveal-left">
                     <div class="floor__image">
-                        <img src="vlad-work.jpg" alt="Vladimir работает" loading="lazy">
+                        <img src="vlad-work.jpg" alt="Vladimir working" loading="lazy">
                         <div class="floor__image-overlay"></div>
                         <div class="floor__number">01</div>
                     </div>
                     <div class="floor__content">
-                        <div class="floor__tag">Начало пути</div>
-                        <h3 class="floor__title">Москва. Первый депозит. Первые ошибки.</h3>
+                        <div class="floor__tag">The Beginning</div>
+                        <h3 class="floor__title">Moscow. First deposit. First lessons.</h3>
                         <p class="floor__text">
-                            Начал торговать в 18 лет — без менторов, без стратегии, на интуиции. 
-                            <strong>Слил три депозита за первый год.</strong> Но вместо того чтобы бросить, 
-                            начал изучать рынок как систему. Часами разбирал графики, тестировал паттерны, 
-                            записывал каждую сделку в дневник. Через 2 года вышел в стабильный плюс.
+                            Started trading at 18 — no mentors, no strategy, pure gut feeling. 
+                            <strong>Blew three accounts in the first year.</strong> But instead of quitting, 
+                            I started studying the market as a system. Spent hours dissecting charts, 
+                            back-testing patterns, journaling every single trade. Within two years, I was 
+                            consistently profitable.
                         </p>
                     </div>
                 </div>
 
-                <!-- Floor 2 -->
                 <div class="floor reveal-right">
                     <div class="floor__image">
                         <img src="vlad-life.jpg" alt="Vladimir lifestyle" loading="lazy">
@@ -1439,18 +1256,17 @@
                         <div class="floor__number">02</div>
                     </div>
                     <div class="floor__content">
-                        <div class="floor__tag">Рост и система</div>
-                        <h3 class="floor__title">Дисциплина. Система. Результат.</h3>
+                        <div class="floor__tag">Growth & System</div>
+                        <h3 class="floor__title">Discipline. System. Results.</h3>
                         <p class="floor__text">
-                            К 24 годам собрал свою торговую систему, которая работала в любых условиях рынка — 
-                            <strong>тренд, флэт, кризис.</strong> Начал делиться знаниями. Первые 100 учеников 
-                            пришли через сарафан. Сейчас — сообщество из 7 000+ человек, которые торгуют по моей 
-                            методологии и выходят в плюс.
+                            By 24, I built a trading system that worked in any market condition — 
+                            <strong>trending, ranging, crisis.</strong> I started sharing what I knew. 
+                            The first 100 students came through word of mouth. Today — a community of 7,000+ 
+                            traders who follow my methodology and consistently close in profit.
                         </p>
                     </div>
                 </div>
 
-                <!-- Floor 3 -->
                 <div class="floor reveal-left">
                     <div class="floor__image">
                         <img src="vlad-travel.jpg" alt="Vladimir travel" loading="lazy">
@@ -1458,13 +1274,13 @@
                         <div class="floor__number">03</div>
                     </div>
                     <div class="floor__content">
-                        <div class="floor__tag">Сегодня</div>
-                        <h3 class="floor__title">Дубай. Свобода. Миссия.</h3>
+                        <div class="floor__tag">Today</div>
+                        <h3 class="floor__title">Dubai. Freedom. Mission.</h3>
                         <p class="floor__text">
-                            Переехал в Дубай — не ради понтов, а ради <strong>среды, которая двигает вперёд.</strong> 
-                            Здесь я торгую каждый день, веду канал, обучаю. Моя цель — показать, что трейдинг 
-                            это не казино и не лотерея, а профессия, которая даёт свободу. Финансовую и 
-                            географическую.
+                            Moved to Dubai — not for the flex, but for <strong>the environment that pushes you forward.</strong> 
+                            I trade every day, run my channel, teach. My goal is to prove that trading 
+                            isn't gambling or a lottery — it's a skill that gives you freedom. Financial 
+                            and geographical.
                         </p>
                     </div>
                 </div>
@@ -1473,12 +1289,12 @@
 
         <div class="section__divider"></div>
 
-        <!-- ========== METHODOLOGY — ACCORDION ========== -->
+        <!-- METHODOLOGY — ACCORDION -->
         <section class="section">
             <div class="container">
                 <div class="section__header reveal">
-                    <div class="section__overline">Методология</div>
-                    <h2 class="section__title">Как я <span>торгую</span></h2>
+                    <div class="section__overline">Methodology</div>
+                    <h2 class="section__title">How I <span>trade</span></h2>
                 </div>
 
                 <div class="accordion reveal">
@@ -1486,15 +1302,15 @@
                         <div class="accordion__header">
                             <div class="accordion__header-left">
                                 <span class="accordion__num">01</span>
-                                <span class="accordion__label">Структура рынка</span>
+                                <span class="accordion__label">Market Structure</span>
                             </div>
                             <div class="accordion__icon"></div>
                         </div>
                         <div class="accordion__body" style="max-height: 200px;">
                             <div class="accordion__body-inner">
-                                Прежде чем открыть сделку, я определяю фазу рынка — <strong>тренд, коррекция или консолидация</strong>. 
-                                Это фундамент. 80% трейдеров теряют деньги, потому что торгуют против структуры. 
-                                Я учу видеть рынок так, как его видят крупные игроки.
+                                Before opening any trade, I identify the market phase — <strong>trend, correction, or consolidation</strong>. 
+                                This is the foundation. 80% of traders lose money because they trade against structure. 
+                                I teach you to read the market the way institutional players do.
                             </div>
                         </div>
                     </div>
@@ -1503,15 +1319,15 @@
                         <div class="accordion__header">
                             <div class="accordion__header-left">
                                 <span class="accordion__num">02</span>
-                                <span class="accordion__label">Ключевые уровни</span>
+                                <span class="accordion__label">Key Levels</span>
                             </div>
                             <div class="accordion__icon"></div>
                         </div>
                         <div class="accordion__body">
                             <div class="accordion__body-inner">
-                                Не индикаторы — <strong>уровни поддержки и сопротивления</strong>. 
-                                Зоны, где реально стоят деньги. Я размечаю их на старших таймфреймах и 
-                                жду реакцию цены. Никаких угадываний — только подтверждённые зоны интереса.
+                                Not indicators — <strong>support and resistance levels</strong>. 
+                                Zones where real money sits. I mark them on higher timeframes and 
+                                wait for price reaction. No guessing — only confirmed zones of interest.
                             </div>
                         </div>
                     </div>
@@ -1520,15 +1336,15 @@
                         <div class="accordion__header">
                             <div class="accordion__header-left">
                                 <span class="accordion__num">03</span>
-                                <span class="accordion__label">Точки входа</span>
+                                <span class="accordion__label">Entry Points</span>
                             </div>
                             <div class="accordion__icon"></div>
                         </div>
                         <div class="accordion__body">
                             <div class="accordion__body-inner">
-                                Вхожу только при совпадении <strong>минимум 3 факторов</strong>: структура + уровень + 
-                                паттерн Price Action. Это фильтрует 90% шума. Одна качественная сделка в день 
-                                лучше, чем десять «на удачу».
+                                I enter only when <strong>at least 3 factors align</strong>: structure + level + 
+                                Price Action pattern. This filters out 90% of noise. One quality trade per day 
+                                beats ten random entries every time.
                             </div>
                         </div>
                     </div>
@@ -1537,15 +1353,15 @@
                         <div class="accordion__header">
                             <div class="accordion__header-left">
                                 <span class="accordion__num">04</span>
-                                <span class="accordion__label">Риск-менеджмент</span>
+                                <span class="accordion__label">Risk Management</span>
                             </div>
                             <div class="accordion__icon"></div>
                         </div>
                         <div class="accordion__body">
                             <div class="accordion__body-inner">
-                                <strong>Максимум 2% на сделку. Всегда.</strong> Стоп-лосс обязателен. 
-                                Нет стопа — нет сделки. Именно управление рисками отличает профессионала от 
-                                игрока. Это правило сохранило мой депозит в каждом кризисе.
+                                <strong>2% max per trade. Always.</strong> Stop-loss is mandatory. 
+                                No stop — no trade. Risk management is what separates a professional 
+                                from a gambler. This rule has protected my capital through every market crash.
                             </div>
                         </div>
                     </div>
@@ -1554,15 +1370,15 @@
                         <div class="accordion__header">
                             <div class="accordion__header-left">
                                 <span class="accordion__num">05</span>
-                                <span class="accordion__label">Психология</span>
+                                <span class="accordion__label">Psychology</span>
                             </div>
                             <div class="accordion__icon"></div>
                         </div>
                         <div class="accordion__body">
                             <div class="accordion__body-inner">
-                                Стратегия без дисциплины — ничто. Я учу <strong>контролировать эмоции</strong>, 
-                                не мстить рынку, не увеличивать лот после убытка. Дневник сделок, чек-листы, 
-                                ритуалы — всё это часть системы, которая приносит деньги.
+                                A strategy without discipline is nothing. I teach <strong>emotional control</strong> — 
+                                don't revenge trade, don't size up after a loss. Trade journal, checklists, 
+                                routines — all part of the system that actually makes money.
                             </div>
                         </div>
                     </div>
@@ -1571,15 +1387,15 @@
                         <div class="accordion__header">
                             <div class="accordion__header-left">
                                 <span class="accordion__num">06</span>
-                                <span class="accordion__label">Мультитаймфрейм</span>
+                                <span class="accordion__label">Multi-Timeframe</span>
                             </div>
                             <div class="accordion__icon"></div>
                         </div>
                         <div class="accordion__body">
                             <div class="accordion__body-inner">
-                                Анализ <strong>сверху вниз: месяц → неделя → день → H4 → H1</strong>. 
-                                Старший таймфрейм задаёт направление, младший — точку входа. 
-                                Это исключает торговлю против основного движения и повышает точность до 90%.
+                                Top-down analysis: <strong>Monthly → Weekly → Daily → H4 → H1</strong>. 
+                                The higher timeframe sets direction, the lower one gives the entry. 
+                                This eliminates counter-trend trades and pushes accuracy to 90%.
                             </div>
                         </div>
                     </div>
@@ -1589,12 +1405,12 @@
 
         <div class="section__divider"></div>
 
-        <!-- ========== GALLERY — HORIZONTAL SCROLL ========== -->
+        <!-- GALLERY -->
         <section class="gallery-section">
             <div class="container">
                 <div class="section__header reveal">
-                    <div class="section__overline">Галерея</div>
-                    <h2 class="section__title">Моя <span>жизнь</span></h2>
+                    <div class="section__overline">Gallery</div>
+                    <h2 class="section__title">My <span>life</span></h2>
                 </div>
             </div>
 
@@ -1603,76 +1419,76 @@
                     <img src="vlad-hero.jpg" alt="Vladimir Volkov" loading="lazy">
                     <div class="gallery-card__overlay">
                         <div class="gallery-card__title">Vladimir Volkov</div>
-                        <div class="gallery-card__sub">Дубай, ОАЭ</div>
+                        <div class="gallery-card__sub">Dubai, UAE</div>
                     </div>
                 </div>
                 <div class="gallery-card">
-                    <img src="vlad-work.jpg" alt="Рабочий процесс" loading="lazy">
+                    <img src="vlad-work.jpg" alt="Market analysis" loading="lazy">
                     <div class="gallery-card__overlay">
-                        <div class="gallery-card__title">Анализ рынка</div>
-                        <div class="gallery-card__sub">Ежедневная рутина</div>
+                        <div class="gallery-card__title">Market Analysis</div>
+                        <div class="gallery-card__sub">Daily routine</div>
                     </div>
                 </div>
                 <div class="gallery-card">
                     <img src="vlad-life.jpg" alt="Lifestyle" loading="lazy">
                     <div class="gallery-card__overlay">
                         <div class="gallery-card__title">Lifestyle</div>
-                        <div class="gallery-card__sub">Свобода выбора</div>
+                        <div class="gallery-card__sub">Freedom of choice</div>
                     </div>
                 </div>
                 <div class="gallery-card">
-                    <img src="vlad-travel.jpg" alt="Путешествия" loading="lazy">
+                    <img src="vlad-travel.jpg" alt="Travel" loading="lazy">
                     <div class="gallery-card__overlay">
-                        <div class="gallery-card__title">Искусство и рынки</div>
-                        <div class="gallery-card__sub">Вдохновение повсюду</div>
+                        <div class="gallery-card__title">Art & Markets</div>
+                        <div class="gallery-card__sub">Inspiration everywhere</div>
                     </div>
                 </div>
             </div>
 
-            <div class="gallery-hint reveal">← Листай →</div>
+            <div class="gallery-hint reveal">← Drag to explore →</div>
         </section>
 
         <div class="section__divider"></div>
 
-        <!-- ========== COMPARISON ========== -->
+        <!-- COMPARISON -->
         <section class="section">
             <div class="container">
                 <div class="section__header reveal">
-                    <div class="section__overline">Сравнение</div>
-                    <h2 class="section__title">Самостоятельно <span>vs с Владимиром</span></h2>
+                    <div class="section__overline">Comparison</div>
+                    <h2 class="section__title">On your own <span>vs with Vladimir</span></h2>
                 </div>
 
                 <div class="comparison reveal">
                     <div class="comparison__side comparison__side--without">
-                        <div class="comparison__side-title">Сам по себе</div>
+                        <div class="comparison__side-title">On Your Own</div>
                         <ul class="comparison__list">
                             <li>
                                 <span class="comparison__icon">✕</span>
-                                <span>Годы проб и ошибок без наставника</span>
+                                <span>Years of trial and error with no mentor</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">✕</span>
-                                <span>Слитые депозиты на «обучении» рынком</span>
+                                <span>Blown accounts as your "education"</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">✕</span>
-                                <span>Торговля на эмоциях и интуиции</span>
+                                <span>Trading on emotions and gut feeling</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">✕</span>
-                                <span>Информационный хаос из YouTube и форумов</span>
+                                <span>Information overload from YouTube and forums</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">✕</span>
-                                <span>Нет системы — нет стабильного результата</span>
+                                <span>No system — no consistent results</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">✕</span>
-                                <span>Одиночество и сомнения в каждом решении</span>
+                                <span>Isolation and self-doubt on every decision</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">✕</span>
-                                <span>Результат: минус на дистанции</span>
+                                <span>Result: net negative over time</span>
                             </li>
                         </ul>
                     </div>
@@ -1682,35 +1498,35 @@
                     </div>
 
                     <div class="comparison__side comparison__side--with">
-                        <div class="comparison__side-title">С Владимиром</div>
+                        <div class="comparison__side-title">With Vladimir</div>
                         <ul class="comparison__list">
                             <li>
                                 <span class="comparison__icon">◆</span>
-                                <span>Готовая система с первого дня</span>
+                                <span>A proven system from day one</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">◆</span>
-                                <span>Чёткие правила входа и выхода</span>
+                                <span>Clear entry and exit rules</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">◆</span>
-                                <span>Риск-менеджмент, который сохраняет депозит</span>
+                                <span>Risk management that protects your capital</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">◆</span>
-                                <span>Ежедневные сигналы и разборы в реальном времени</span>
+                                <span>Daily signals and live trade breakdowns</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">◆</span>
-                                <span>Сообщество трейдеров, которые зарабатывают</span>
+                                <span>A community of traders who actually profit</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">◆</span>
-                                <span>Поддержка и обратная связь на каждом этапе</span>
+                                <span>Support and feedback at every stage</span>
                             </li>
                             <li>
                                 <span class="comparison__icon">◆</span>
-                                <span>Результат: стабильный плюс на дистанции</span>
+                                <span>Result: consistent profit over time</span>
                             </li>
                         </ul>
                     </div>
@@ -1720,53 +1536,53 @@
 
         <div class="section__divider"></div>
 
-        <!-- ========== RESULTS ========== -->
+        <!-- RESULTS -->
         <section class="section">
             <div class="container">
                 <div class="section__header reveal">
-                    <div class="section__overline">Результаты</div>
-                    <h2 class="section__title">Цифры <span>говорят</span></h2>
+                    <div class="section__overline">Results</div>
+                    <h2 class="section__title">Numbers <span>don't lie</span></h2>
                 </div>
 
                 <div class="results-grid">
                     <div class="result-card reveal">
                         <div class="result-card__value">90%</div>
-                        <div class="result-card__label">Винрейт стратегии</div>
+                        <div class="result-card__label">Strategy Win Rate</div>
                         <div class="result-card__bar">
                             <div class="result-card__bar-fill" data-width="90"></div>
                         </div>
                     </div>
                     <div class="result-card reveal">
-                        <div class="result-card__value">7 200+</div>
-                        <div class="result-card__label">Учеников в сообществе</div>
+                        <div class="result-card__value">7,200+</div>
+                        <div class="result-card__label">Community Members</div>
                         <div class="result-card__bar">
                             <div class="result-card__bar-fill" data-width="85"></div>
                         </div>
                     </div>
                     <div class="result-card reveal">
                         <div class="result-card__value">10+</div>
-                        <div class="result-card__label">Лет на рынке</div>
+                        <div class="result-card__label">Years in the Market</div>
                         <div class="result-card__bar">
                             <div class="result-card__bar-fill" data-width="95"></div>
                         </div>
                     </div>
                     <div class="result-card reveal">
-                        <div class="result-card__value">2 400+</div>
-                        <div class="result-card__label">Сигналов за 2024 год</div>
+                        <div class="result-card__value">2,400+</div>
+                        <div class="result-card__label">Signals Sent in 2024</div>
                         <div class="result-card__bar">
                             <div class="result-card__bar-fill" data-width="80"></div>
                         </div>
                     </div>
                     <div class="result-card reveal">
                         <div class="result-card__value">15+</div>
-                        <div class="result-card__label">Торговых инструментов</div>
+                        <div class="result-card__label">Trading Instruments</div>
                         <div class="result-card__bar">
                             <div class="result-card__bar-fill" data-width="70"></div>
                         </div>
                     </div>
                     <div class="result-card reveal">
                         <div class="result-card__value">24/5</div>
-                        <div class="result-card__label">Мониторинг рынка</div>
+                        <div class="result-card__label">Market Monitoring</div>
                         <div class="result-card__bar">
                             <div class="result-card__bar-fill" data-width="100"></div>
                         </div>
@@ -1777,38 +1593,38 @@
 
         <div class="section__divider"></div>
 
-        <!-- ========== TESTIMONIALS ========== -->
+        <!-- TESTIMONIALS -->
         <section class="section">
             <div class="container">
                 <div class="section__header reveal">
-                    <div class="section__overline">Отзывы</div>
-                    <h2 class="section__title">Что говорят <span>ученики</span></h2>
+                    <div class="section__overline">Testimonials</div>
+                    <h2 class="section__title">What students <span>say</span></h2>
                 </div>
 
                 <div class="testimonials-grid">
                     <div class="testimonial reveal">
                         <p class="testimonial__text">
-                            Полгода торговал в минус. После месяца с Владимиром впервые закрыл месяц в плюс. 
-                            Система реально работает — нужна только дисциплина.
+                            Traded in the red for six months. After one month with Vladimir, I closed 
+                            my first profitable month ever. The system actually works — you just need discipline.
                         </p>
-                        <div class="testimonial__author">Дмитрий К.</div>
-                        <div class="testimonial__role">Трейдер, 8 месяцев в команде</div>
+                        <div class="testimonial__author">Dmitry K.</div>
+                        <div class="testimonial__role">Trader, 8 months in the team</div>
                     </div>
                     <div class="testimonial reveal">
                         <p class="testimonial__text">
-                            Главное — это подход к рискам. Раньше мог поставить 10% депозита на одну сделку. 
-                            Теперь строго 1-2%, и результат стал стабильным. Спасибо, Влад.
+                            The biggest shift was risk management. I used to risk 10% per trade. 
+                            Now it's strictly 1–2%, and my results became consistent. Thank you, Vlad.
                         </p>
-                        <div class="testimonial__author">Алексей М.</div>
-                        <div class="testimonial__role">Трейдер, 1 год в команде</div>
+                        <div class="testimonial__author">Alex M.</div>
+                        <div class="testimonial__role">Trader, 1 year in the team</div>
                     </div>
                     <div class="testimonial reveal">
                         <p class="testimonial__text">
-                            Пришла полным новичком. Через 3 месяца начала торговать самостоятельно. 
-                            Разборы, сигналы, поддержка — всё на высшем уровне.
+                            Joined as a complete beginner. Within 3 months I was placing trades on my own. 
+                            The breakdowns, signals, support — everything is top tier.
                         </p>
-                        <div class="testimonial__author">Елена В.</div>
-                        <div class="testimonial__role">Трейдер, 5 месяцев в команде</div>
+                        <div class="testimonial__author">Elena V.</div>
+                        <div class="testimonial__role">Trader, 5 months in the team</div>
                     </div>
                 </div>
             </div>
@@ -1816,25 +1632,25 @@
 
         <div class="section__divider"></div>
 
-        <!-- ========== FINAL CTA ========== -->
+        <!-- FINAL CTA -->
         <section class="final-cta">
             <div class="final-cta__bg"></div>
             <div class="final-cta__content container">
                 <div class="section__overline" style="justify-content: center; margin-bottom: 20px;">
-                    <span>Присоединяйся</span>
+                    <span>Join Now</span>
                 </div>
                 <h2 class="final-cta__title reveal">
-                    Готов торговать<br><span>с результатом?</span>
+                    Ready to trade<br><span>with results?</span>
                 </h2>
                 <p class="final-cta__subtitle reveal">
-                    Подписывайся на канал, изучай контент, следуй системе. 
-                    Первые результаты — уже через неделю.
+                    Subscribe to the channel, study the content, follow the system. 
+                    First results — within one week.
                 </p>
 
                 <div class="final-cta__buttons reveal">
                     <a href="https://tg.trading-top.com/3dkFKBQd3c" target="_blank" class="btn btn--red">
                         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.28-.02-.12.03-2.02 1.28-5.69 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.38-.51 1.05-.78 4.12-1.79 6.87-2.97 8.26-3.54 3.93-1.62 4.75-1.9 5.28-1.91.12 0 .37.03.54.17.14.12.18.28.2.45-.01.06.01.24 0 .37z"/></svg>
-                        Telegram-канал
+                        Telegram Channel
                     </a>
                     <a href="https://www.youtube.com/channel/UCCySG084DhJZyicDcm697dw" target="_blank" class="btn btn--outline">
                         <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -1843,38 +1659,35 @@
                 </div>
 
                 <div class="final-cta__timer reveal">
-                    Осталось <strong id="footer-timer">09:00:00</strong> до закрытия доступа
+                    <strong id="footer-timer">09:00:00</strong> left until access closes
                 </div>
             </div>
         </section>
 
-        <!-- ========== FOOTER ========== -->
+        <!-- FOOTER -->
         <footer class="footer">
             <div class="container">
                 <p class="footer__text">
-                    © 2025 Vladimir Volkov. Все права защищены.
+                    © 2025 Vladimir Volkov. All rights reserved.
                 </p>
                 <p class="footer__risk">
-                    Торговля на финансовых рынках связана с высоким уровнем риска и подходит не всем инвесторам. 
-                    Прошлые результаты не гарантируют будущую прибыль. Контент носит образовательный характер 
-                    и не является финансовой рекомендацией.
+                    Trading financial markets involves a high level of risk and may not be suitable for all investors. 
+                    Past performance does not guarantee future results. Content is for educational purposes only 
+                    and does not constitute financial advice.
                 </p>
             </div>
         </footer>
 
-    </div><!-- /main-content -->
+    </div>
 
-    <!-- ============================================
-         JAVASCRIPT
-         ============================================ -->
     <script>
-        /* ---- TIMER (9 hours, localStorage persist, infinite loop) ---- */
+        /* TIMER — 9h, localStorage, infinite loop */
         (function() {
-            const DURATION = 9 * 60 * 60 * 1000; // 9 hours
-            const KEY = 'vladTimerEnd';
+            var DURATION = 9 * 60 * 60 * 1000;
+            var KEY = 'vladTimerEnd';
 
             function getEnd() {
-                let end = localStorage.getItem(KEY);
+                var end = localStorage.getItem(KEY);
                 if (!end || Number(end) <= Date.now()) {
                     end = Date.now() + DURATION;
                     localStorage.setItem(KEY, end);
@@ -1885,8 +1698,8 @@
             function pad(n) { return n < 10 ? '0' + n : n; }
 
             function tick() {
-                let end = getEnd();
-                let diff = end - Date.now();
+                var end = getEnd();
+                var diff = end - Date.now();
 
                 if (diff <= 0) {
                     end = Date.now() + DURATION;
@@ -1894,15 +1707,15 @@
                     diff = DURATION;
                 }
 
-                const h = Math.floor(diff / 3600000);
-                const m = Math.floor((diff % 3600000) / 60000);
-                const s = Math.floor((diff % 60000) / 1000);
+                var h = Math.floor(diff / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+                var s = Math.floor((diff % 60000) / 1000);
 
                 document.getElementById('t-hours').textContent = pad(h);
                 document.getElementById('t-minutes').textContent = pad(m);
                 document.getElementById('t-seconds').textContent = pad(s);
 
-                const ft = document.getElementById('footer-timer');
+                var ft = document.getElementById('footer-timer');
                 if (ft) ft.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
             }
 
@@ -1910,21 +1723,19 @@
             setInterval(tick, 1000);
         })();
 
-        /* ---- ACCORDION ---- */
+        /* ACCORDION */
         document.querySelectorAll('.accordion__header').forEach(function(header) {
             header.addEventListener('click', function() {
-                const item = this.parentElement;
-                const body = item.querySelector('.accordion__body');
-                const inner = body.querySelector('.accordion__body-inner');
-                const isActive = item.classList.contains('active');
+                var item = this.parentElement;
+                var body = item.querySelector('.accordion__body');
+                var inner = body.querySelector('.accordion__body-inner');
+                var isActive = item.classList.contains('active');
 
-                // Close all
                 document.querySelectorAll('.accordion__item').forEach(function(ai) {
                     ai.classList.remove('active');
                     ai.querySelector('.accordion__body').style.maxHeight = '0';
                 });
 
-                // Open clicked (if was closed)
                 if (!isActive) {
                     item.classList.add('active');
                     body.style.maxHeight = inner.scrollHeight + 28 + 'px';
@@ -1932,10 +1743,10 @@
             });
         });
 
-        /* ---- SCROLL REVEAL ---- */
+        /* SCROLL REVEAL */
         (function() {
-            const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-            const observer = new IntersectionObserver(function(entries) {
+            var els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            var observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
@@ -1946,13 +1757,13 @@
             els.forEach(function(el) { observer.observe(el); });
         })();
 
-        /* ---- RESULT BAR ANIMATION ---- */
+        /* RESULT BAR ANIMATION */
         (function() {
-            const bars = document.querySelectorAll('.result-card__bar-fill');
-            const observer = new IntersectionObserver(function(entries) {
+            var bars = document.querySelectorAll('.result-card__bar-fill');
+            var observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
-                        const w = entry.target.getAttribute('data-width');
+                        var w = entry.target.getAttribute('data-width');
                         entry.target.style.width = w + '%';
                     }
                 });
@@ -1961,11 +1772,11 @@
             bars.forEach(function(bar) { observer.observe(bar); });
         })();
 
-        /* ---- GALLERY DRAG SCROLL ---- */
+        /* GALLERY DRAG SCROLL */
         (function() {
-            const el = document.getElementById('galleryScroll');
+            var el = document.getElementById('galleryScroll');
             if (!el) return;
-            let isDown = false, startX, scrollLeft;
+            var isDown = false, startX, scrollLeft;
 
             el.addEventListener('mousedown', function(e) {
                 isDown = true;
@@ -1995,3 +1806,4 @@
     </script>
 </body>
 </html>
+```__
